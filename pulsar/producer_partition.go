@@ -289,6 +289,9 @@ func (p *partitionProducer) reconnectToBroker() {
 			maxRetry--
 		}
 	}
+
+	// Reconnect failed, closing producer
+	p.Close()
 }
 
 func (p *partitionProducer) runEventsLoop() {

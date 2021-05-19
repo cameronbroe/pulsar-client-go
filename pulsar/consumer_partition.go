@@ -891,6 +891,9 @@ func (pc *partitionConsumer) reconnectToBroker() {
 			maxRetry--
 		}
 	}
+
+	// Reconnect failed, close the consumer so application can respond
+	pc.Close()
 }
 
 func (pc *partitionConsumer) grabConn() error {
